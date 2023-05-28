@@ -1,0 +1,68 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %}
+{% block content %}
+    <div class = "checklist">
+        <h3>{{ artistname }}<br>CONCERT ESSENTIALS</h3>
+        {% for item in items: %}
+        <input type="checkbox" value = "{{ item }}">
+        <label for="{{ item }}"> {{ item }} </label><br><br>
+        {% endfor %}
+    </div>
+    <label class="switch" style="position: absolute; left: 1650px; top: 635px;">
+        <input type="checkbox" id="switch">
+        <span class="slider round"></span>
+    </label>
+    <h4 style="position: absolute; left: 1530px; top: 570px;">masc</h4>
+    <h4 style="position: absolute; left: 1725px; top: 570px;">fem</h4>
+    <script>
+       
+        document.getElementById('switch').addEventListener('click', function(){
+     
+            var shown = document.getElementsByClassName('shown');
+            var hidden = document.getElementsByClassName('hidden');
+            
+            const referenceToMascDiv = document.getElementById('masc');
+            const referenceToFemDiv = document.getElementById('fem');
+            
+            if (referenceToMascDiv) {
+                const showOrHide = document.getElementById('switch').checked;
+
+                console.log('showOrHide', showOrHide)
+
+                if (showOrHide === false) {
+                    referenceToMascDiv.style.display = 'block'
+                    referenceToFemDiv.style.display = 'none'
+                } else {
+                    referenceToMascDiv.style.display = 'none'
+                    referenceToFemDiv.style.display = 'block'
+                }
+            }
+        })
+    </script>
+
+    <div>
+        <h4 style="position: absolute; left: 475px; top: 150px;">CONCERT VLOGS</h4>
+    </div>
+    
+    <div class = "photos">
+    <div id = "masc">
+        {% for image in images[0]: %}
+        <img src="{{ image }}" class = "photo">
+        {% endfor %}
+    </div>
+    <div id = "fem" style = "display: none;">
+        {% for image in images[1]: %}
+        <img src="{{ image }}" class = "photo">
+        {% endfor %}
+    </div>
+    </div>
+
+    <div>
+        <h4 style="position: absolute; left: 475px; top: 575px;">OUTFIT IDEAS</h4>
+    </div>
+    
+    <div class = 'container'>
+        <iframe class = 'video' src="{{ links[0] }}" frameborder="0" allowfullscreen></iframe>
+        <iframe class = 'video' src="{{ links[1] }}" frameborder="0" allowfullscreen></iframe>
+        <iframe class = 'video' src="{{ links[2] }}" frameborder="0" allowfullscreen></iframe>
+    </div>
+{% endblock %}

@@ -1,0 +1,5 @@
+google-api-python-client==2.87.0
+Flask==2.3.2
+google-search-results==2.4.2
+
+These are all the APIS we used with their versions. Spotify required no installations but all of them required API keys.
